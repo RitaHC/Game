@@ -17,7 +17,8 @@ Here is a hand drawn picture of the proposed pages
 
 2. Game Arena - where players play the game and manipulate their score
 
-![image](https://user-images.githubusercontent.com/119079394/209275428-2008c86b-a44e-41ff-8f4e-5d96e9b479fe.png)
+![image](https://user-images.githubusercontent.com/119079394/209360150-48915a67-3cfb-493f-8f35-fe4a9156d98a.png)
+
 
 # Code Info
 1. Create a class of objects which shall move across the canvas area, in-and-out through a repeated animation loop
