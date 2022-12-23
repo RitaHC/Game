@@ -4,7 +4,7 @@
 
 There will be multiple moving objects flying around the screen, the player can shoot them with the help of cursor clicks and build-up their score.
 
-# Technology Used
+# Technologies Used
 
 1. HTML5
 2. CSS
