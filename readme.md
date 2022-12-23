@@ -17,10 +17,9 @@ Here is a hand drawn picture of the proposed pages
 
 2. Game Arena - where players play the game and manipulate their score
 
-3. End page - how the page would look after the game is over
-
 ![image](https://user-images.githubusercontent.com/119079394/209360150-48915a67-3cfb-493f-8f35-fe4a9156d98a.png)
 
+3. End page - how the page would look after the game is over
 ![image](https://user-images.githubusercontent.com/119079394/209360653-132eb0dd-779d-439c-868c-0733145f0dc3.png)
 
 # Code Info
