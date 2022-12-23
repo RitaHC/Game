@@ -1,8 +1,8 @@
 # SHOOTING GAME
 
-# What is the Game about
+# User Story
 
-There will be multiple moving objects flying around the screen, the player can shoot them and build-up their score.
+There will be multiple moving objects flying around the screen, the player can shoot them with the help of cursor clicks and build-up their score.
 
 # Technology Employes
 
