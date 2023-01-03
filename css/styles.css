@@ -1,0 +1,24 @@
+body{
+   /*background: linear-gradient(to left, pink, orange, purple);*/
+   background-image: url('https://img.freepik.com/premium-vector/forest-wallpaper-night_749121-10.jpg?w=2000');
+   width: 100vw;
+   height: 100vh;
+   overflow: hidden;
+}
+
+canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#collisionCanvas{
+    opacity: 0;
+}
+
+#start a{
+    border: 3px solid black;
+    color: white;
+}
