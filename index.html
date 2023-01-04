@@ -5,22 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Chela+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Rye&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Monoton&display=swap" rel="stylesheet">
     <title>Raven-Shooting</title>
 </head>
 <body>
-
-    <!--<div id="start" style="display:block">
-        <a href="#" onclick="startGame()"></a>Start Game</a> </div>  -->
-
-        <div id="'start-screen" class="'screen" style="display:block"> 
-        <button id="start" onclick="startGame()"> Start <button>
-        </div>
-        
-     
-
-    <canvas id="canvas1" style="display: none" ></canvas>
-    <canvas id="collisionCanvas" ></canvas>
     
+
+    <div id="start-screen" class="screen" style="display:block">
+        <span class="dot"></span>
+        <h1 class="heading">RAVEN-HUNT</h1>
+        <button id="start" onclick="start()"> PLAY</button>
+    </div>
+
+    <div id="instructions">
+        <p class="sub-heading">Instructions: </p>
+        <ul>
+            <li>* There are Raven flying from left-to-right</li>
+            <li>* click on the raven before they touch the left border</li>
+            <li>* If a raven reaches the left border: GAME ENDS</li>
+            <li>* Your score shall be displayed when the game is over</li>
+        </ul>
+    </div>
+        
+    <canvas id="canvas1" style="display: none" ></canvas>
+    <canvas id="collisionCanvas" style="display: none"></canvas>
     
     <script src="js/script.js"></script>
 </body>

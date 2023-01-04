@@ -1,36 +1,27 @@
 console.log('Linked')
 
-//Trial 1
-//Start-Game Function
-//  const startGame = () => {
-//      let startDiv = document.getElementById('start')
-//      let canvas = document.getElementById('canvas1')
-//      let collisionCanvas = document.getElementById('collisionCanvas')
-//       startDiv.style.display = 'none'
-//       gameCanvas.style.display = 'inline'
-//       collisionCanvas.style.display = 'block'
-//      start()
-// }
-
-const start = document.getElementById('start')
 const canvas = document.getElementById('canvas1')
 const collisionCanvas = document.getElementById('collisionCanvas')
 
-//Trial -2
-// const startOver = () = {
-//     if( canvas.style.display === 'none' || collisionCanvas.style.display === 'none'){
-//         canvas.style.display = 'block'
-//         collisionCanvas.style.display = 'block'
-//     } else{
-//         canvas.style.display = 'none'
-//         collisionCanvas.style.display = 'none'
-//     }
-//  }
+const startScreen = document.getElementById('start-screen')
 
-//  start.addEventListener('click', startOver())
+// Start Screen Function
+
+const toggleScreen = (id, toggle) => {
+    let element = document.getElementById(id)
+    let display1 = (toggle) ? 'block' : 'none'
+    element.style.display = display1
+}
+const start = () => {
+    console.log('Start Game')
+    toggleScreen('start-screen', false)
+    toggleScreen('canvas1', true)
+    // toggleScreen('collisionCanvas', true)
+
+}
 
 
-// Building Canvas 
+// Building Canvas1 
 
 const ctx = canvas.getContext('2d')
 canvas.width = window.innerWidth
@@ -99,7 +90,7 @@ class Raven {
                 this.timeSinceFlap = 0
             }
 
-            //Game-over consition
+            //Game-over condition
             if (this.x < 0-this.x){
                 gameOver = true
             }
@@ -117,6 +108,47 @@ class Raven {
     }
 }
 
+// Class Green-Bird 
+
+let greenBirds = []
+class greenBird {
+    constructor() {
+        this.spriteWidth = 300
+        this.spriteHeight = 245
+        this.sizeModifier =Math.random() * 0.6 + 0.4
+        this.width = this.spriteWidth * this.sizeModifier
+        this.height = this.spriteHeight * this.sizeModifier
+        this.x = canvas.width
+        this.y = Math.random()*(canvas.height -  this.height)
+        this.directionX = Math.random() * 5 + 3
+        this.directionY = Math.random() * 5 -2.5 
+        this.markedForDeletion = false
+        this.image = new Image()
+        this.image.src = 'green-bird.png'
+        this.frame = 0
+        this.maxFrame = 7
+        this.randomColors = [Math.floor(Math.random()*255), Math.floor(Math.random()*255), Math.floor(Math.random()*255)]
+        this.color = 'rgb(' + this.randomColors[0] + ',' + this.randomColors[1] + ',' + this.randomColors[2] + ')'
+    }
+
+    update(deltaTime){
+        // making canvas a boundary and creating bouncing effect
+        if(this.y<0 || this.y > canvas.height-this.height){
+            this.directionY = this.directionY * -1
+        }
+        this.x -= this.directionX
+        this.y += this.directionY
+
+        //filter out objects which are beyond the screen
+        if (this.x < 0 - this.width) {
+            this.markedForDeletion = true
+        }
+
+        
+
+    }
+
+}
 
 // Class Explosion and sound effects
 let explosions = []
@@ -166,15 +198,19 @@ const drawScore = () => {
 const drawGameOver = () => {
     ctx.textAlign = 'center'
     ctx.fillStyle = 'black'
-    ctx.fillText('GAME OVER, yourscore is' + score, canvas.width/2, canvas.height/2)
+    ctx.fillText('GAME OVER, yourscore is - ' + score, canvas.width/2, canvas.height/2)
     ctx.fillStyle = 'white'
-    ctx.fillText('GAME OVER, yourscore is' + score, canvas.width/2 + 5, canvas.height/2 + 5)
+    ctx.fillText('GAME OVER, yourscore is - ' + score, canvas.width/2 + 5, canvas.height/2 + 5)
+
+    // const restart = document.getElementById('start')
+    // restart.addEventListener('click', location.reload())
+    // restart.appendChild(canvas1)
 }
 
+//Collision upon click
 window.addEventListener('click', function (e){
     const detectPixelColor = collisionCtx.getImageData(e.x, e.y, 1,1)
     const pc = detectPixelColor.data
-    console.log(detectPixelColor)
     ravens.forEach((e)=> {
         if(e.randomColors[0]===pc[0] && e.randomColors[1]===pc[1] && e.randomColors[2]===pc[2]){
             //Collision detected by color
@@ -186,6 +222,17 @@ window.addEventListener('click', function (e){
         }
     })
 })
+
+// // Game-Over Screen
+//  const gameOverScreen = () => {
+//     console.log('Game is Over')
+//     const endScreen = document.getElementById('end-screen')
+//     canvas1.style.display = 'none'
+//     startScreen.style.display = 'none'
+//     endScreen.style.display = 'block'
+//     drawGameOver()
+    
+//  }
 
 
 //Animation Function 
@@ -210,7 +257,9 @@ const animate = (timestamp) =>{
     if (!gameOver) {
         requestAnimationFrame(animate)
     } else{
-        drawGameOver()
+         drawGameOver()
     }
 }
 animate(0)
+
+

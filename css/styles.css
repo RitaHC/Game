@@ -1,12 +1,70 @@
 body{
    /*background: linear-gradient(to left, pink, orange, purple);*/
-   background-image: url('https://img.freepik.com/premium-vector/forest-wallpaper-night_749121-10.jpg?w=2000');
+   background-image: url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700431536.jpg');
+   background-size: cover;
    width: 100vw;
    height: 100vh;
    overflow: hidden;
+   font-family: 'Audiowide', cursive;
+   
 }
 
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: rgb(248, 232, 229);
+    border-radius: 50%;
+    display: inline-block;
+    animation: animateDot 1.5s linear infinite;
+  }
+
+  @keyframes animateDot{
+    0%{
+        left: 20px;
+        top: 100px;
+    }
+    25%{
+        left: 150px;
+        top: 0px;
+    }
+    50%{
+        left: 300px;
+        top: 150px;
+    }
+    75%{
+        left: 300px;
+        top: 150px;
+    }
+    100%{
+        left: 0px;
+        top: 150px;
+    } 
+    }
+  
+.heading{
+text-align: center;
+font-family: 'Bungee Shade', cursive;
+padding-top: 5vh;
+font-size: 70px;
+color: white;
+animation: animate 1.5s linear infinite;
+}
+
+@keyframes animate{
+    0%{
+      opacity: 0;
+    }
+    30%{
+      opacity: 0.7;
+    }
+    100%{
+      opacity: 0;
+    }
+  }
+
 canvas{
+    background-image: url('https://img.freepik.com/premium-vector/forest-wallpaper-night_749121-10.jpg?w=2000');
+    background-size: cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -20,5 +78,57 @@ canvas{
 
 #start a{
     border: 3px solid black;
+    color: white;
+}
+
+#start-screen{
+    margin: auto 0;
+    background: none;
+}
+
+button{
+    display: flex;
+    text-align: center;
+    padding-left: 10vh;
+    padding-right: 10vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    margin-top: 20vh;
+    margin-left: auto;
+    margin-right: auto;
+    background: #af7ee0f5;
+    border-radius: 8px;
+    font-family: 'Monoton', cursive;
+    font-size: 30px;
+    color: white;
+}
+
+button:hover{
+    background: #450388fd;
+    box-shadow: 5px 5px #450388fd;
+}
+
+#end-screen{
+    background: white;
+}
+
+#instructions{
+    padding-top: 5vh;
+    font-family: 'Chela One', cursive;
+    font-size: 20px; 
+    text-align: center;
+
+    
+}
+ul, li {
+    display: block;
+    list-style-type: circle;
+    color: white;
+}
+
+.sub-heading{
+    text-align: center;
+    font-family: 'Chela One', cursive;
+    font-size: 5vh;
     color: white;
 }
