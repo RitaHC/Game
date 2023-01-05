@@ -108,14 +108,14 @@ class Raven {
     }
 }
 
-// Class Green-Bird 
+// Class crazyBird 
 
-let greenBirds = []
-class greenBird {
+let crazyBirds = []
+class crazyBird {
     constructor() {
         this.spriteWidth = 300
-        this.spriteHeight = 245
-        this.sizeModifier =Math.random() * 0.6 + 0.4
+        this.spriteHeight = 284
+        this.sizeModifier =Math.random() * 0.2 + 0.2
         this.width = this.spriteWidth * this.sizeModifier
         this.height = this.spriteHeight * this.sizeModifier
         this.x = canvas.width
@@ -124,9 +124,9 @@ class greenBird {
         this.directionY = Math.random() * 5 -2.5 
         this.markedForDeletion = false
         this.image = new Image()
-        this.image.src = 'green-bird.png'
+        this.image.src = 'bird.png'
         this.frame = 0
-        this.maxFrame = 7
+        this.maxFrame = 2
         this.randomColors = [Math.floor(Math.random()*255), Math.floor(Math.random()*255), Math.floor(Math.random()*255)]
         this.color = 'rgb(' + this.randomColors[0] + ',' + this.randomColors[1] + ',' + this.randomColors[2] + ')'
     }
@@ -143,9 +143,24 @@ class greenBird {
         if (this.x < 0 - this.width) {
             this.markedForDeletion = true
         }
-
         
+        this.timeSinceFlap += deltaTime
+        if(this.timeSinceFlap>this.flapInterval){
+            if(this.frame > this.maxFrame) {
+                this.frame = 0
+            }else{
+                this.frame++
+                this.timeSinceFlap = 0
+            }
+        }
+    }
 
+    draw(){
+        // creating object box
+        collisionCtx.fillStyle = this.color
+        collisionCtx.fillRect(this.x, this.y, this.width, this.height)
+        // creating sprite object inside a rectangle
+        ctx.drawImage(this.image, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height)
     }
 
 }
@@ -186,6 +201,16 @@ class Explosion {
     }
 }
 
+//Red Explosion
+const redExplosions = []
+
+class redExplosion {
+    constructor(x,y,size){
+        this.image = new Image()
+        this.image.src = ''
+    }
+}
+
 //Score Function
 const drawScore = () => {
     ctx.fillStyle = 'black'
@@ -198,9 +223,9 @@ const drawScore = () => {
 const drawGameOver = () => {
     ctx.textAlign = 'center'
     ctx.fillStyle = 'black'
-    ctx.fillText('GAME OVER, yourscore is - ' + score, canvas.width/2, canvas.height/2)
+    ctx.fillText('GAME OVER, yourscore is : ' + score, canvas.width/2, canvas.height/2)
     ctx.fillStyle = 'white'
-    ctx.fillText('GAME OVER, yourscore is - ' + score, canvas.width/2 + 5, canvas.height/2 + 5)
+    ctx.fillText('GAME OVER, yourscore is : ' + score, canvas.width/2 + 5, canvas.height/2 + 5)
 
     // const restart = document.getElementById('start')
     // restart.addEventListener('click', location.reload())
@@ -217,6 +242,17 @@ window.addEventListener('click', function (e){
 
             e.markedForDeletion = true
             score ++
+            explosions.push(new Explosion(e.x, e.y, e.width))
+            console.log(explosions)
+        }
+    })
+
+    crazyBirds.forEach((e)=> {
+        if(e.randomColors[0]===pc[0] && e.randomColors[1]===pc[1] && e.randomColors[2]===pc[2]){
+            //Collision detected by color
+
+            e.markedForDeletion = true
+            score = score+2
             explosions.push(new Explosion(e.x, e.y, e.width))
             console.log(explosions)
         }
@@ -245,15 +281,17 @@ const animate = (timestamp) =>{
     //Setting raven interval time 
     if (timeToNextRaven > ravenInterval){
         ravens.push(new Raven())
+        crazyBirds.push(new crazyBird())
         timeToNextRaven = 0
     }
     drawScore();
 
     //Spread-Operator -> Spreading the array
-    [...ravens, ...explosions].forEach(object => object.update(deltaTime));
-    [...ravens, ...explosions].forEach(object => object.draw());
+    [...ravens, ...explosions, ...crazyBirds].forEach(object => object.update(deltaTime));
+    [...ravens, ...explosions, ...crazyBirds].forEach(object => object.draw());
     ravens = ravens.filter(object => !object.markedForDeletion)
     explosions = explosions.filter(object => !object.markedForDeletion)
+    crazyBirds = crazyBirds.filter(object => !object.markedForDeletion)
     if (!gameOver) {
         requestAnimationFrame(animate)
     } else{
