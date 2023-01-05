@@ -38,7 +38,7 @@ let gameOver = false
 let ravens = []
 
 let timeToNextRaven = 0
-let ravenInterval = 1300
+let ravenInterval = 2000
 let lastTime = 0
 let score = 0
 
@@ -112,6 +112,10 @@ class Raven {
 // Class of crazyBird 
 
 let crazyBirds = []
+
+let timeToNextBird = 0
+let birdInterval = 4300
+
 class crazyBird {
     constructor() {
         this.spriteWidth = 300
@@ -278,14 +282,22 @@ window.addEventListener('click', function (e){
 const animate = (timestamp) =>{
     ctx.clearRect(0,0, canvas.width, canvas.height)
     collisionCtx.clearRect(0,0, canvas.width, canvas.height)
+
     let deltaTime = timestamp - lastTime
     lastTime = timestamp
-    timeToNextRaven += deltaTime
+
     //Setting raven interval time 
+    timeToNextRaven += deltaTime
     if (timeToNextRaven > ravenInterval){
         ravens.push(new Raven())
-        crazyBirds.push(new crazyBird())
         timeToNextRaven = 0
+    }
+
+    //Setting crazybird interval
+    timeToNextBird += deltaTime
+    if(timeToNextBird > birdInterval){
+        crazyBirds.push(new crazyBird())
+        timeToNextBird = 0
     }
     drawScore();
 
@@ -325,7 +337,7 @@ const home = () => {
     const homeBtn = ctx.drawImage(img,centerX,centerY, 100 , 100)
     console.log(homeBtn)
 
-    homeBtn.addEventListener('click', () => {
+    home.addEventListener('click', () => {
         console.log('Score clicked')
         location.reload()
         
