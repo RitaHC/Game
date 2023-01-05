@@ -9,42 +9,12 @@ body{
    
 }
 
-.dot {
-    height: 25px;
-    width: 25px;
-    background-color: rgb(248, 232, 229);
-    border-radius: 50%;
-    display: inline-block;
-    animation: animateDot 1.5s linear infinite;
-  }
-
-  @keyframes animateDot{
-    0%{
-        left: 20px;
-        top: 100px;
-    }
-    25%{
-        left: 150px;
-        top: 0px;
-    }
-    50%{
-        left: 300px;
-        top: 150px;
-    }
-    75%{
-        left: 300px;
-        top: 150px;
-    }
-    100%{
-        left: 0px;
-        top: 150px;
-    } 
-    }
   
 .heading{
 text-align: center;
+margin-top: 100px;
 font-family: 'Bungee Shade', cursive;
-padding-top: 5vh;
+padding-top: 1vh;
 font-size: 70px;
 color: white;
 animation: animate 1.5s linear infinite;
@@ -76,10 +46,6 @@ canvas{
     opacity: 0;
 }
 
-#start a{
-    border: 3px solid black;
-    color: white;
-}
 
 #start-screen{
     margin: auto 0;
@@ -91,9 +57,7 @@ button{
     text-align: center;
     padding-left: 10vh;
     padding-right: 10vh;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    margin-top: 20vh;
+    margin-bottom: 60px;
     margin-left: auto;
     margin-right: auto;
     background: #af7ee0f5;
@@ -113,17 +77,16 @@ button:hover{
 }
 
 #instructions{
-    padding-top: 5vh;
     font-family: 'Chela One', cursive;
     font-size: 20px; 
-    text-align: center;
 
     
 }
 ul, li {
-    display: block;
     list-style-type: circle;
     color: white;
+    text-align: left;
+    font-family: 'Handlee';
 }
 
 .sub-heading{
