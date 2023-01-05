@@ -233,10 +233,6 @@ const drawGameOver = () => {
     ctx.fillText('GAME OVER, yourscore is : ' + score, canvas.width/2, canvas.height/2)
     ctx.fillStyle = 'white'
     ctx.fillText('GAME OVER, yourscore is : ' + score, canvas.width/2 + 5, canvas.height/2 + 5)
-
-    // const restart = document.getElementById('start')
-    // restart.addEventListener('click', location.reload())
-    // restart.appendChild(canvas1)
 }
 
 //Collision upon click
@@ -265,17 +261,6 @@ window.addEventListener('click', function (e){
         }
     })
 })
-
-// // Game-Over Screen
-//  const gameOverScreen = () => {
-//     console.log('Game is Over')
-//     const endScreen = document.getElementById('end-screen')
-//     canvas1.style.display = 'none'
-//     startScreen.style.display = 'none'
-//     endScreen.style.display = 'block'
-//     drawGameOver()
-    
-//  }
 
 
 //Animation Function 
@@ -326,35 +311,25 @@ const home = () => {
     centerX = (canvas.width/2) -50 
     centerY = (canvas.height/2) +30
 
-    // console.log(homeScreen)
 
-    // homeScreen.addEventListener('click', ()=> {
-    //     console.log('Event Listener heard')
-    // })
-    
+    ctx.textAlign = 'center'
+    ctx.font = "bold 38px 'Bungee Shade'"
+    ctx.fillStyle = 'white'
+    ctx.fillText('Click to return Home', centerX+50, centerY+200)
 
     const img = document.getElementById('homeimg')
     const homeBtn = ctx.drawImage(img,centerX,centerY, 100 , 100)
     console.log(homeBtn)
 
-    home.addEventListener('click', () => {
+    canvas.addEventListener('click', () => {
         console.log('Score clicked')
         location.reload()
         
       })
-    // let score = document.getElementById('score')
-    // score = 1
-    // console.log(score)
-
+    
     
 }
 
-// const backHome = () => {
-//             console.log('backHome')
-//             canvas.style.display = 'none'
-//             startScreen.style.display = 'block'
-//         }
 
-// backHome()
 
 
