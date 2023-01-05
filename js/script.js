@@ -5,6 +5,7 @@ const collisionCanvas = document.getElementById('collisionCanvas')
 
 const startScreen = document.getElementById('start-screen')
 
+
 // Start Screen Function
 
 const toggleScreen = (id, toggle) => {
@@ -108,7 +109,7 @@ class Raven {
     }
 }
 
-// Class crazyBird 
+// Class of crazyBird 
 
 let crazyBirds = []
 class crazyBird {
@@ -124,9 +125,11 @@ class crazyBird {
         this.directionY = Math.random() * 5 -2.5 
         this.markedForDeletion = false
         this.image = new Image()
-        this.image.src = 'bird.png'
+        this.image.src = '6Birds.png'
         this.frame = 0
-        this.maxFrame = 2
+        this.maxFrame = 4
+        this.timeSinceFlap = 0
+        this.flapInterval = Math.random() * 100  + 100
         this.randomColors = [Math.floor(Math.random()*255), Math.floor(Math.random()*255), Math.floor(Math.random()*255)]
         this.color = 'rgb(' + this.randomColors[0] + ',' + this.randomColors[1] + ',' + this.randomColors[2] + ')'
     }
@@ -296,8 +299,50 @@ const animate = (timestamp) =>{
         requestAnimationFrame(animate)
     } else{
          drawGameOver()
+         home()
     }
 }
 animate(0)
+
+
+//Home Screen 
+const homeScreen = document.getElementById('home')
+
+const home = () => {
+    console.log('HomeScreen')
+
+    centerX = (canvas.width/2) -50 
+    centerY = (canvas.height/2) +30
+
+    // console.log(homeScreen)
+
+    // homeScreen.addEventListener('click', ()=> {
+    //     console.log('Event Listener heard')
+    // })
+    
+
+    const img = document.getElementById('homeimg')
+    const homeBtn = ctx.drawImage(img,centerX,centerY, 100 , 100)
+    console.log(homeBtn)
+
+    homeBtn.addEventListener('click', () => {
+        console.log('Score clicked')
+        location.reload()
+        
+      })
+    // let score = document.getElementById('score')
+    // score = 1
+    // console.log(score)
+
+    
+}
+
+// const backHome = () => {
+//             console.log('backHome')
+//             canvas.style.display = 'none'
+//             startScreen.style.display = 'block'
+//         }
+
+// backHome()
 
 

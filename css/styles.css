@@ -70,6 +70,12 @@ button{
 button:hover{
     background: #450388fd;
     box-shadow: 5px 5px #450388fd;
+    color: white;
+}
+
+.bird{
+    text-decoration:underline;
+    font-family: 'Bungee+Shade';
 }
 
 #end-screen{
@@ -80,13 +86,12 @@ button:hover{
     font-family: 'Chela One', cursive;
     font-size: 20px; 
 
-    
 }
 ul, li {
     list-style-type: circle;
     color: white;
     text-align: left;
-    font-family: 'Handlee';
+    font-family: 'Bungee+Shade';
 }
 
 .sub-heading{
@@ -94,4 +99,7 @@ ul, li {
     font-family: 'Chela One', cursive;
     font-size: 5vh;
     color: white;
+}
+#insttructions:hover, li:hover{
+    color: aliceblue;
 }

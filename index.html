@@ -28,9 +28,10 @@
     <div id="instructions">
         <p class="sub-heading">Instructions: </p>
         <ul>
-            <li> There are Raven flying from left-to-right</li>
-            <li> click on the raven before they touch the left border</li>
-            <li> If a raven reaches the left border: GAME ENDS</li>
+            <li> There are ,<span class="bird">BIRDS</span> flying from left-to-right</li>
+            <li> Click on the <span class="bird">BLACK RAVEN </span>, Score increases by +1</li>
+            <li>Click on <span class="bird">CRAZY BIRDS </span>, Score increases by +2</li>
+            <li> If a raven reaches the left border: <span class="bird">GAME ENDS</span></li>
             <li> Your score shall be displayed when the game is over</li>
         </ul>
     </div>
@@ -38,8 +39,14 @@
 
         
     <canvas id="canvas1" style="display: none" ></canvas>
+
+    <span id="score">
+        <img src="HomeButton.png" style="display: none" id="homeimg">
+    </span>
+
+        <!-- <button id="home"  style="display: none" onclick="home()">Home</button> -->
     <canvas id="collisionCanvas" style="display: none"></canvas>
     
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
