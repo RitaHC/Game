@@ -123,7 +123,7 @@ class crazyBird {
         this.sizeModifier =Math.random() * 0.2 + 0.4
         this.width = this.spriteWidth * this.sizeModifier
         this.height = this.spriteHeight * this.sizeModifier
-        this.x = canvas.width
+        this.x = canvas.width + 30
         this.y = Math.random()*(canvas.height -  this.height)
         this.directionX = Math.random() * 5 + 3
         this.directionY = Math.random() * 5 -2.5 
