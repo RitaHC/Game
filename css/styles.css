@@ -71,6 +71,7 @@ button:hover{
     background: #450388fd;
     box-shadow: 5px 5px #450388fd;
     color: white;
+    border: 2px solid white;
 }
 
 .bird{

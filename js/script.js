@@ -38,7 +38,7 @@ let gameOver = false
 let ravens = []
 
 let timeToNextRaven = 0
-let ravenInterval = 2000
+let ravenInterval = 1000
 let lastTime = 0
 let score = 0
 
@@ -114,13 +114,13 @@ class Raven {
 let crazyBirds = []
 
 let timeToNextBird = 0
-let birdInterval = 4300
+let birdInterval = 6300
 
 class crazyBird {
     constructor() {
         this.spriteWidth = 300
         this.spriteHeight = 284
-        this.sizeModifier =Math.random() * 0.2 + 0.2
+        this.sizeModifier =Math.random() * 0.2 + 0.4
         this.width = this.spriteWidth * this.sizeModifier
         this.height = this.spriteHeight * this.sizeModifier
         this.x = canvas.width
@@ -208,15 +208,6 @@ class Explosion {
     }
 }
 
-//Red Explosion
-const redExplosions = []
-
-class redExplosion {
-    constructor(x,y,size){
-        this.image = new Image()
-        this.image.src = ''
-    }
-}
 
 //Score Function
 const drawScore = () => {
@@ -302,27 +293,28 @@ const animate = (timestamp) =>{
 animate(0)
 
 
-//Home Screen 
+//Going back to Home Screen 
 const homeScreen = document.getElementById('home')
 
 const home = () => {
     console.log('HomeScreen')
 
+    //Loacting canvas center for loaction of X and Y
     centerX = (canvas.width/2) -50 
     centerY = (canvas.height/2) +30
 
-
-    ctx.textAlign = 'center'
-    ctx.font = "bold 38px 'Bungee Shade'"
-    ctx.fillStyle = 'white'
-    ctx.fillText('Click to return Home', centerX+50, centerY+200)
-
+    //Adding Home Image
     const img = document.getElementById('homeimg')
     const homeBtn = ctx.drawImage(img,centerX,centerY, 100 , 100)
     console.log(homeBtn)
 
+    //Adding text for click on home screen
+        ctx.textAlign = 'center'
+        ctx.font = "bold 38px 'Bungee Shade'"
+        ctx.fillStyle = 'white'
+        ctx.fillText('Click to return Home', centerX+50, centerY+200)
+
     canvas.addEventListener('click', () => {
-        console.log('Score clicked')
         location.reload()
         
       })
