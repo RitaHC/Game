@@ -6,7 +6,7 @@ const collisionCanvas = document.getElementById('collisionCanvas')
 const startScreen = document.getElementById('start-screen')
 
 
-// Start Screen Function
+/////////////////////  Start Screen Function  ////////////////////////
 
 const toggleScreen = (id, toggle) => {
     let element = document.getElementById(id)
@@ -22,21 +22,21 @@ const start = () => {
 }
 
 
-// Building Canvas1 
+/////  Building Canvas1  /////
 
 const ctx = canvas.getContext('2d')
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
+ctx.font = '50px Impact'
 
-
+/////////   Building Collision canvas  ////////
 const collisionCtx = collisionCanvas.getContext('2d')
 collisionCanvas.width = window.innerWidth
 collisionCanvas.height = window.innerHeight
-ctx.font = '50px Impact'
+
+////Helper variables////
 let gameOver = false
-
 let ravens = []
-
 let timeToNextRaven = 0
 let ravenInterval = 1000
 let lastTime = 0
@@ -44,7 +44,7 @@ let score = 0
 
 
 
-//Class of Ravens
+/////////////////////////  Class of Ravens  /////////////////////////
 class Raven {
     constructor(){
         this.spriteWidth = 271
@@ -52,17 +52,20 @@ class Raven {
         this.sizeModifier =Math.random() * 0.6 + 0.4
         this.width = this.spriteWidth * this.sizeModifier
         this.height = this.spriteHeight * this.sizeModifier
-        this.x = canvas.width
+        this.x = canvas.width 
         this.y = Math.random()*(canvas.height -  this.height)
         this.directionX = Math.random() * 5 + 3
         this.directionY = Math.random() * 5 -2.5 
         this.markedForDeletion = false
         this.image = new Image()
         this.image.src = 'raven.png'
+        //change frames
         this.frame = 0
         this.maxFrame = 4
+        // setting raven interval
         this.timeSinceFlap = 0
         this.flapInterval = Math.random() * 50  + 50
+        // adding color to the boxes carrying ravens
         this.randomColors = [Math.floor(Math.random()*255), Math.floor(Math.random()*255), Math.floor(Math.random()*255)]
         this.color = 'rgb(' + this.randomColors[0] + ',' + this.randomColors[1] + ',' + this.randomColors[2] + ')'
         
@@ -83,7 +86,7 @@ class Raven {
 
         //using delatTime to set equal intervals
         this.timeSinceFlap += deltaTime
-        if(this.timeSinceFlap>this.flapInterval){
+        if(this.timeSinceFlap > this.flapInterval){
             if(this.frame > this.maxFrame) {
                 this.frame = 0
             }else{
@@ -109,7 +112,7 @@ class Raven {
     }
 }
 
-// Class of crazyBird 
+////////////////////////// Class of crazyBird ////////////////////////////
 
 let crazyBirds = []
 
@@ -172,7 +175,7 @@ class crazyBird {
 
 }
 
-// Class Explosion and sound effects
+/////////////////////////   Class Explosion and sound effects  ////////////////////
 let explosions = []
 class Explosion {
     constructor (x,y,size){
@@ -209,7 +212,7 @@ class Explosion {
 }
 
 
-//Score Function
+///////////////////////  Score Function  ///////////////////////////////
 const drawScore = () => {
     ctx.fillStyle = 'black'
     ctx.fillText('Score ' + score, 50, 75)
@@ -217,7 +220,7 @@ const drawScore = () => {
     ctx.fillText('Score ' + score, 55, 80)
    
 } 
-//Draw Game-Over 
+//////////////////////  Draw Game-Over  //////////////////////////////// 
 const drawGameOver = () => {
     ctx.textAlign = 'center'
     ctx.fillStyle = 'black'
@@ -226,7 +229,7 @@ const drawGameOver = () => {
     ctx.fillText('GAME OVER, yourscore is : ' + score, canvas.width/2 + 5, canvas.height/2 + 5)
 }
 
-//Collision upon click
+////////////////////  Collision upon click  ////////////////////////////
 window.addEventListener('click', function (e){
     const detectPixelColor = collisionCtx.getImageData(e.x, e.y, 1,1)
     const pc = detectPixelColor.data
@@ -254,7 +257,7 @@ window.addEventListener('click', function (e){
 })
 
 
-//Animation Function 
+/////////////////////////////  Animation Function  /////////////////////// 
 const animate = (timestamp) =>{
     ctx.clearRect(0,0, canvas.width, canvas.height)
     collisionCtx.clearRect(0,0, canvas.width, canvas.height)
@@ -280,9 +283,11 @@ const animate = (timestamp) =>{
     //Spread-Operator -> Spreading the array
     [...ravens, ...explosions, ...crazyBirds].forEach(object => object.update(deltaTime));
     [...ravens, ...explosions, ...crazyBirds].forEach(object => object.draw());
+    //Deleting the ravens who have moved out of the screen
     ravens = ravens.filter(object => !object.markedForDeletion)
     explosions = explosions.filter(object => !object.markedForDeletion)
     crazyBirds = crazyBirds.filter(object => !object.markedForDeletion)
+    //Setting a game-over condition
     if (!gameOver) {
         requestAnimationFrame(animate)
     } else{
@@ -293,7 +298,7 @@ const animate = (timestamp) =>{
 animate(0)
 
 
-//Going back to Home Screen 
+//////////////  Going back to Home Screen  ///////////////////////// 
 const homeScreen = document.getElementById('home')
 
 const home = () => {
@@ -321,7 +326,3 @@ const home = () => {
     
     
 }
-
-
-
-
