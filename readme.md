@@ -21,7 +21,7 @@ The user shall be able to experience the following features in the game:
 4. Vanilla Dom 
 5. Sprite Animation
 
-# WIREFRAMES WITH HAND NOTES
+# WIREFRAMES WITH HAND WRITTEN NOTES
 
 ###### HAND WRITTEN FRAMES
 below is a hand drawn picture of the proposed pages
