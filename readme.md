@@ -37,13 +37,13 @@ below is a hand drawn picture of the proposed pages
 ###### FINAL FRAMES
 
 1. Landing Page
-![image](wireframes/1.png)
+![image](wireframes/landing.png)
 
 2. Game Screen
-![image](wireframes/2.png)
+![image](wireframes/Game.png)
 
 2. Game Over Screen
-![image](wireframes/3.png)
+![image](wireframes/GameOver.png)
 
 # Code Info
 1. Create a class of objects which shall move across the canvas area, in-and-out through a repeated animation loop
