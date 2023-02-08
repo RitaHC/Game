@@ -47,10 +47,10 @@ below is a hand drawn picture of the proposed pages
 
 # Code Info
 1. Create a class of objects which shall move across the canvas area, in-and-out through a repeated animation loop
-2. Repeated animation loop can be created with the help of requestAnimationFrame(callback) & timestamp
-3. The objects could be turned into an array and be filtered
-4. Objects leaving the canvas area can be push() 'ed out of the Array and .filter 'ed
-5. Objects could be spread accross the whole canvas: with the help of Array literal spread operator [... object]
-6. Shooting can be done by using cursor.eventListener 
-7. Coilision can be targeted with the help of x, y, height and width values
+2. Repeated animation loop can be created with the help of `requestAnimationFrame(callback)` & timestamp
+3. The objects could be turned into an `array and be filtered`
+4. Objects leaving the canvas area can be `push()` 'ed out of the Array and .filter 'ed
+5. Objects could be `spread accross the whole canvas`: with the help of Array literal `spread operator [... object]`
+6. `Shooting can be done by using cursor.eventListener` 
+7. `Coilision` can be targeted with the help of x, y, height and width values
 8. Upon coilision the object disapears and the score increases
